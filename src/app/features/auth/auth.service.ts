@@ -30,4 +30,8 @@ export class AuthService {
       switchMap( ({ user }) => updateProfile(user, { displayName }))
     );
   }
+
+  signOut() {
+    return from(this.auth.signOut())
+  }
 }

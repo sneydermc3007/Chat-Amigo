@@ -2,7 +2,8 @@
   <span> {{title}} </span>
   <span class="header-spacer"></span>
   <ng-container *ngIf="_auth.isLoggedIn$ | async as user; else authButtons">
-    <span>Usuario {{ $any(user)?.displayName }} inicio sesión</span>
+    <span> Usuario: {{ $any(user)?.displayName }} </span>
+    <button mat-button (click)="signOut()" class="logout"> Cerrar Sesion </button>
   </ng-container>
 </mat-toolbar>
 
