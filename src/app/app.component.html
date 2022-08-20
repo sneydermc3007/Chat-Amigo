@@ -2,7 +2,7 @@
   <span> {{title}} </span>
   <span class="header-spacer"></span>
   <ng-container *ngIf="_auth.isLoggedIn$ | async as user; else authButtons">
-    <span>Usuario {{ $any(user)?.email }} esta iniciando en</span>
+    <span>Usuario {{ $any(user)?.displayName }} inicio sesión</span>
   </ng-container>
 </mat-toolbar>
 

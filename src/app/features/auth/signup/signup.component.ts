@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -12,7 +14,9 @@ export class SignupComponent implements OnInit {
 
   form!: FormGroup;
 
-  constructor( private _auth: AuthService ) { }
+  constructor( private _auth: AuthService,
+                private router: Router,
+                private snackbar: MatSnackBar ) { }
 
   ngOnInit(): void {
 
@@ -25,8 +29,10 @@ export class SignupComponent implements OnInit {
 
   signUp() {
 
-    console.log('Se registro con: ', this.form.value);
-    this._auth.signUp(this.form.value);
+    this._auth.signUp(this.form.value).subscribe({
+      next: () => this.router.navigate(['chat']),
+      error: (error) => this.snackbar.open(error.message)
+    });
   }
 
 }
