@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signin',
@@ -12,7 +14,9 @@ export class SigninComponent implements OnInit {
 
   form!: FormGroup;
 
-  constructor( private _auth: AuthService ) { }
+  constructor( private _auth: AuthService,
+                private router: Router,
+                private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
 
@@ -24,8 +28,10 @@ export class SigninComponent implements OnInit {
 
   signIn() {
 
-    console.log('Inicio sesión con: ', this.form);
-    this._auth.signIn(this.form.value);
+    this._auth.signIn(this.form.value).subscribe({
+      next: () => this.router.navigate(['chat']),
+      error: (error) => this.snackbar.open(error.message)
+    })
   }
 
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Auth, authState, createUserWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
+import { Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
 import { BehaviorSubject, from, Observable, of, switchMap } from 'rxjs';
-import { SignupCredentials } from './auth.model';
+import { SignupCredentials, SigninCredentials } from './auth.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +14,9 @@ export class AuthService {
 
   constructor(private auth: Auth) { }
 
-  signIn(credentials: Object) {
+  signIn( {email, password} : SigninCredentials) {
 
-    this.authState.next(credentials)
+    return from(signInWithEmailAndPassword(this.auth, email, password))
   }
 
   // signUp(user: Object) {

@@ -1,6 +1,11 @@
-export interface SignupCredentials {
+
+export interface SigninCredentials {
 
   email: string;
-  displayName: string;
   password: string;
+}
+
+export interface SignupCredentials extends SigninCredentials {
+
+  displayName: string;
 }
