@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "get-stream-io-chat-amigo": {
+      "hosting": {
+        "chatAmigo_AS": [
+          "get-stream-io-chat-amigo"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "get-stream-io-chat-amigo"
+  }
+}

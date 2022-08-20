@@ -105,6 +105,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "chatAmigo_AS:build:production",
+            "firebaseProject": "get-stream-io-chat-amigo",
+            "firebaseHostingSite": "get-stream-io-chat-amigo"
+          }
         }
       }
     }
