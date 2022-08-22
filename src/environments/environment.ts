@@ -11,7 +11,8 @@ export const environment = {
     authDomain: 'get-stream-io-chat-amigo.firebaseapp.com',
     messagingSenderId: '921378195018',
   },
-  production: false
+  production: false,
+  apiUrl: 'https://us-central1-get-stream-io-chat-amigo.cloudfunctions.net'
 };
 
 /*

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from "@angular/common/http";
 
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
@@ -22,13 +23,14 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     ReactiveFormsModule,
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
     MatDividerModule,
+    MatSnackBarModule,
     RouterModule,
-    MatSnackBarModule
   ]
 })
 export class AuthModule { }
