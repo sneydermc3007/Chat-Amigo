@@ -1,0 +1,6 @@
+<mat-form-field>
+  <mat-label>Añade un nuevo grupo</mat-label>
+  <input type="text" matInput [formControl]="channelName" placeholder="Nombre del grupo">
+</mat-form-field>
+
+<button mat-raised-button color="primary" (click)="onCreate()">Crear Grupo</button>

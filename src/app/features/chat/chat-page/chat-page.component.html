@@ -1,3 +1,5 @@
+<app-new-channel (saved)="onCreate($event)"></app-new-channel>
+
 <section class="chat" *ngIf="chatIsReady$ | async; else unavailable">
   <stream-channel-list></stream-channel-list>
   <stream-channel>
