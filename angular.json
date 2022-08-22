@@ -119,5 +119,7 @@
       }
     }
   },
-  "defaultProject": "chatAmigo_AS"
+  "cli": {
+    "analytics": false
+  }
 }
