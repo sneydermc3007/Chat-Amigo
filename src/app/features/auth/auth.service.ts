@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
-import { BehaviorSubject, forkJoin, from, Observable, of, switchMap } from 'rxjs';
+import { BehaviorSubject, forkJoin, from, pluck, switchMap } from 'rxjs';
 import { SignupCredentials, SigninCredentials } from './auth.model';
 import { environment } from "../../../environments/environment";
 
@@ -16,8 +16,19 @@ export class AuthService {
 
   constructor(private auth: Auth, private http: HttpClient) { }
 
-  signIn( {email, password} : SigninCredentials) {
+  getCurrentUSer() {
+    return this.auth.currentUser!;
+  }
 
+  getStreamToken(){
+    return this.http.post<{ token: string }>(`${environment.apiUrl}/createStreamToken`, {
+      user: this.getCurrentUSer()
+    }).pipe(
+      pluck('token')
+    )
+  }
+
+  signIn({email, password} : SigninCredentials) {
     return from(signInWithEmailAndPassword(this.auth, email, password))
   }
 
@@ -25,7 +36,7 @@ export class AuthService {
 
   //   this.authState.next(user)
   // }
-  signUp = ( {email, password, displayName} : SignupCredentials) => {
+  signUp = ({email, password, displayName} : SignupCredentials) => {
     return from(
       createUserWithEmailAndPassword(this.auth, email, password)
     ).pipe(

@@ -8,5 +8,8 @@ export const environment = {
     messagingSenderId: '921378195018',
   },
   production: true,
-  apiUrl: 'https://us-central1-get-stream-io-chat-amigo.cloudfunctions.net'
+  apiUrl: 'https://us-central1-get-stream-io-chat-amigo.cloudfunctions.net',
+  stream: {
+    key: 'wwdn5fksknp4'
+  }
 };
